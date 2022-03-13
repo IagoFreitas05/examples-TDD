@@ -1,14 +1,14 @@
 package domain;
 
 public class Stack {
-    private Object element;
-    private int quantity;
+    private Object[] element = new Object[10];
+    private int quantity = 0;
 
     public Stack(int i) {
     }
 
     public boolean isEmpty() {
-        return (this.element == null);
+        return (this.quantity == 0);
     }
 
     public int size() {
@@ -16,11 +16,17 @@ public class Stack {
     }
 
     public void stackUp(Object element) {
-        this.element = element;
+        this.element[this.quantity] = element;
         this.quantity++;
     }
 
     public String top() {
-        return this.element.toString();
+        return this.element[quantity - 1].toString();
+    }
+
+    public Object unstack() {
+        Object top = top();
+        this.quantity--;
+        return top;
     }
 }
