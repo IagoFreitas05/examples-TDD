@@ -1,10 +1,13 @@
 package domain;
 
+import errors.EmptyStackExceptionStack;
+
 public class Stack {
-    private Object[] element = new Object[10];
+    private Object[] element;
     private int quantity = 0;
 
-    public Stack(int i) {
+    public Stack(int maximo) {
+        this.element = new Object[maximo];
     }
 
     public boolean isEmpty() {
@@ -25,6 +28,8 @@ public class Stack {
     }
 
     public Object unstack() {
+        if(isEmpty())
+            throw new EmptyStackExceptionStack("sua pilha está vazia");
         Object top = top();
         this.quantity--;
         return top;
