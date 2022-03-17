@@ -1,5 +1,6 @@
 import domain.Stack;
 import errors.EmptyStackExceptionStack;
+import errors.StackOverflowStackError;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -45,5 +46,19 @@ public class StackTest {
     @Test(expected = EmptyStackExceptionStack.class)
     public void unstackEmpty() {
         stack.unstack();
+    }
+
+    @Test(expected = StackOverflowStackError.class)
+    public void stackOverflow(){
+        for(int i =0;i<10;i++){
+            stack.stackUp("elemento" + i);
+        }
+        try{
+            stack.stackUp("EXPLODED");
+            fail();
+        }catch (StackOverflowStackError e){
+
+        }
+
     }
 }

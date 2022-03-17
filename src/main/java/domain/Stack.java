@@ -1,6 +1,7 @@
 package domain;
 
 import errors.EmptyStackExceptionStack;
+import errors.StackOverflowStackError;
 
 public class Stack {
     private Object[] element;
@@ -19,8 +20,11 @@ public class Stack {
     }
 
     public void stackUp(Object element) {
+        if(this.quantity == 10)
+            throw new StackOverflowStackError("sua pilha está cheia");
         this.element[this.quantity] = element;
         this.quantity++;
+
     }
 
     public String top() {
