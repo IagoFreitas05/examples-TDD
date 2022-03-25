@@ -20,7 +20,7 @@ public class Stack {
     }
 
     public void stackUp(Object element) {
-        if(this.quantity == 10)
+        if (this.quantity == 10)
             throw new StackOverflowStackError("sua pilha está cheia");
         this.element[this.quantity] = element;
         this.quantity++;
@@ -32,7 +32,7 @@ public class Stack {
     }
 
     public Object unstack() {
-        if(isEmpty())
+        if (isEmpty())
             throw new EmptyStackExceptionStack("sua pilha está vazia");
         Object top = top();
         this.quantity--;
